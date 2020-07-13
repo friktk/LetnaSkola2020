@@ -1,0 +1,13 @@
+@startuml
+!include ../include/themes/light.puml
+actor Zákazník
+Zákazník->App:Získaj moje objednávky\nID #33245
+App->"REST API":GET http://www.example.com/customers/33245/orders
+"REST API"->Database:SELECT * from orders where ID=33245
+Database-->"REST API":ResultSet
+alt zákazník sa našiel
+	"REST API"-->App:HTTP/1.1 200 OKH\nContent-type: application/json \n------------------------------------------------------------------------------------------------------------------------------------------------------------\n {\n  order: {\n    line_items: [\n      {\n        variant_id: 447654529,\n        quantity: 1\n      }\n    ]\n  }\n}
+else else
+	"REST API"-->App:HTTP/1.1 404 Not Found\nContent-type: application/json
+end
+@enduml

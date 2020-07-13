@@ -1,0 +1,127 @@
+# Project information
+site_name: "BT-car3"
+site_url: https://hudikm.github.io/TrafficCounterDemo/
+site_author: Martin Húdik
+site_description: >-
+  Výučbový systém BT-car3
+
+# Repository
+repo_name: TrafficCounterDemo
+repo_url: "https://github.com/hudikm/TrafficCounterDemo.git"
+edit_uri: ""
+
+# Copyright
+copyright: Copyright &copy; 2020 Martin Húdik
+
+# Configuration
+theme:
+  name: material
+  
+  
+  # Don't include MkDocs' JavaScript
+  include_search_page: true
+  search_index_only: true
+
+  # Default values, taken from mkdocs_theme.yml
+  language: sk
+  features:
+    - tabs
+    #- instant
+  palette:
+    primary: indigo
+    accent: indigo
+  font:
+    text: Roboto
+    code: Roboto Mono
+  icon:
+    logo: logo
+  favicon: assets/favicon.png
+
+# Plugins
+plugins:
+    - search:
+        lang:
+          - en
+        prebuild_index: true
+    - minify:
+        minify_html: true
+    - build_plantuml:
+        render: "server"
+        server: "http://www.plantuml.com/plantuml"
+        output_format: "svg" # or "png"
+        diagram_root: "docs/diagrams" # should reside under docs_dir
+        output_folder: "out"
+        input_folder: "src"
+        theme_enabled: true
+        theme_folder: "include/themes"
+        theme_light: "light.puml"
+        theme_dark: "dark.puml"
+
+extra_css:
+    - 'stylesheets/extra.css'
+    - 'stylesheets/w3.css'
+      
+# Customization
+extra:
+#  disqus: 'trafficcounterdemo'
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/squidfunk
+
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML
+
+# Extensions
+markdown_extensions:
+  - markdown.extensions.admonition
+  - markdown.extensions.attr_list
+  - markdown.extensions.codehilite:
+      guess_lang: false
+  - markdown.extensions.def_list
+  - markdown.extensions.footnotes
+  - markdown.extensions.meta
+  - markdown.extensions.toc:
+      permalink: true
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:pymdownx.emoji.twemoji
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  # - pymdownx.highlight:
+  #     linenums_style: pymdownx-inline
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+      user: squidfunk
+      repo: mkdocs-material
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      check_paths: true
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+# Page tree
+nav:
+  - BT-car3: 
+    - Úvod: index.md
+    - Príklady: 
+        - Príklad 1 „RGB_LED“: pr1.md
+        - Príklad 2 „RGB_AKU“: pr2.md
+        - Príklad 3 „TLAČIDLO“: pr3.md
+        - Príklad 4 „UART“: pr4.md
+        - Príklad 5 „Fotoodpor“: pr5.md
+        - Prerušovací podsystém: pr6.md
+        - PWM: pr6.md
+
+#google_analytics:
+#  - UA-165560005-2
+#  - auto
