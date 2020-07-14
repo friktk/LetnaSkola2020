@@ -1,17 +1,17 @@
 # Project information
 site_name: "BT-car3"
-site_url: https://hudikm.github.io/TrafficCounterDemo/
+site_url: https://friktk.github.io/LetnaSkola2020/
 site_author: Martin Húdik
 site_description: >-
   Výučbový systém BT-car3
 
 # Repository
-repo_name: TrafficCounterDemo
-repo_url: "https://github.com/hudikm/TrafficCounterDemo.git"
+repo_name: LetnaSkola 2020
+repo_url: "https://github.com/friktk/LetnaSkola2020.git"
 edit_uri: ""
 
 # Copyright
-copyright: Copyright &copy; 2020 Martin Húdik
+copyright: Copyright &copy; 2020 Juraj Miček
 
 # Configuration
 theme:
@@ -67,7 +67,7 @@ extra:
 #  disqus: 'trafficcounterdemo'
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/squidfunk
+      link: https://github.com/friktk
 
 extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML
@@ -122,6 +122,10 @@ nav:
         - Príklad 5 „Fotoodpor“: pr5.md
         - Prerušovací podsystém: pr6.md
         - PWM: pr7.md
+        - Download: https://github.com/friktk/LetnaSkola2020/archive/ulohy.zip
+    - Cvičenia:
+        - Knižnica: https://github.com/friktk/LetnaSkola2020/archive/triedy_cvicenie.zip
+        - Schémy: https://github.com/friktk/LetnaSkola2020/tree/priklady/schema
 
 #google_analytics:
 #  - UA-165560005-2
