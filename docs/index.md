@@ -230,6 +230,8 @@ Takéto riešenie, v ktorom sú technické parametre obsiahnuté v hlavičkovom 
 #include <inttypes.h>	/* Include integer type header file */
 #include <stdlib.h>		/* Include standard library file */
 #include <stdio.h>		/* Include standard library file */
+#include <avr/interrupt.h> 
+
 
 /********Definicie uživateľskych makier********************************/
 #define sbi(x,y) x |= (1<<y)	//nastav bit     
@@ -284,6 +286,11 @@ enum delic_hodin{
 	EXT_R
 };
 
+//PWM kanal
+enum kanal {
+	A,
+	B
+};
 #endif /* BOARD_AVR_H_ */
 ```
 

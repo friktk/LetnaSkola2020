@@ -31,6 +31,8 @@ Synchrónnu (preto je tam to S), ako aj asynchrónnu. Na obrázku je znázornen�
 
 Kvôli jednoduchosti sa budeme venovať len asynchrónnej komunikácii. Voľba asynchrónneho režimu sa realizuje zápisom log.0 do bitov UMSEL00 a UMSEL01 v registri UCSR0C. Poznamenajme, že počiatočné nastavenie týchto bitov je 00, preto pokiaľ ich nenastavíme ináč bude modul po zapnutí v režime asynchrónnej komunikácie. Popíšme bližšie význam jednotlivých bitov v dátových, riadiacich a stavových registroch.
 
+## Registre USART komunikačného rozhrania
+
 ### Registre prenosovej rýchlosti, UBRR0L a UBRR0H - USART Baud Rate Registers
 
 | Bit     | 15   | 14   | 13   | 12   | 11      | 10      | 9      | 8      |
@@ -367,24 +369,24 @@ Vráťme sa však konečne k nášmu projektu UART. V prvom kroku vytvoríme tri
 
 	int main(){
 		uart.Uart_init();
-    	char pocet = 0;
-        
-        for (uint8_t i = 0; i < 20; i++){
-            uart.Uart_send_char('-');
-        }
-        uart.Uart_send_char('\n');
-        uart.Uart_send_char('\r');
-
-        while (1) //nekonecny cyklus
-        {
-            //while(!p_tl->get_Tlac()){};   // pokial nie je stlacene caka
-            char znak = uart.Uart_rec_char(); //caka na prijem znaku
-            //uart.Uart_send_char(pocet+0x30);
-            uart.Uart_send_char(znak);
-            pocet++;
-        }
-    }
-    ```
+		char pocet = 0;
+	    
+	    for (uint8_t i = 0; i < 20; i++){
+	        uart.Uart_send_char('-');
+	    }
+	    uart.Uart_send_char('\n');
+	    uart.Uart_send_char('\r');
+	
+	    while (1) //nekonecny cyklus
+	    {
+	        //while(!p_tl->get_Tlac()){};   // pokial nie je stlacene caka
+	        char znak = uart.Uart_rec_char(); //caka na prijem znaku
+	        //uart.Uart_send_char(pocet+0x30);
+	        uart.Uart_send_char(znak);
+	        pocet++;
+	    }
+	}
+	```
 
 
 Všimnime si funkciu `UART_init()`. Táto nastavuje všetky parametre sériového prenosu. Nebolo by vhodnejšie aby pri volaní funkcie užívateľ zadal konkrétne parametre prenosu podľa aktuálnej potreby? Samozrejme, že áno. Preto sa pokúste upraviť túto funkciu tak, aby sme pri jej volaní mohli zadať aspoň prenosovú rýchlosť.

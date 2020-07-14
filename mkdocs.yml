@@ -16,6 +16,7 @@ copyright: Copyright &copy; 2020 Martin Húdik
 # Configuration
 theme:
   name: material
+  logo: images/logo.svg
   
   
   # Don't include MkDocs' JavaScript
@@ -33,9 +34,9 @@ theme:
   font:
     text: Roboto
     code: Roboto Mono
-  icon:
-    logo: logo
-  favicon: assets/favicon.png
+  #icon:
+   # logo: images/logo
+  favicon: images/icon.png
 
 # Plugins
 plugins:
@@ -120,7 +121,7 @@ nav:
         - Príklad 4 „UART“: pr4.md
         - Príklad 5 „Fotoodpor“: pr5.md
         - Prerušovací podsystém: pr6.md
-        - PWM: pr6.md
+        - PWM: pr7.md
 
 #google_analytics:
 #  - UA-165560005-2
