@@ -1,0 +1,41 @@
+@startuml gitworkflow
+!pragma teoz true
+!include ../include/themes/light.puml 
+participant ExtGit as "Vzdialený repozitár" order 10
+create LocalGit as "Lokálny repozitár" order 20
+ExtGit -> LocalGit: git clone
+create WDir as "Pracovný adresár" order 40
+LocalGit -> WDir
+activate WDir
+WDir -> WDir:Vývoj novej funkcionality
+create Stage as "Stage area" order 30
+activate Stage
+WDir -> Stage--: git add example.java
+Stage -> LocalGit--: git commit -m\n"Funkcia hotová"
+activate LocalGit
+note right of LocalGit #LightSteelBlue
+[master 6f52063] Funkcia hotová
+ 1 file changed, 1 insertion(+)
+ create mode 100644 example.java
+end note
+note left of LocalGit #LightSteelBlue
+História comitov:
+6f52063 (HEAD -> master) Funkcia hotová
+end note
+activate WDir
+WDir -> WDir:Další vývoj
+WDir -> Stage--: git add example.java
+activate Stage
+Stage -> LocalGit--: git commit -m\n"Dalšia funkcia"
+note right of LocalGit #LightSteelBlue
+[master a5466f1] Dalšia funkcia
+ 1 file changed, 1 insertion(+)
+ create mode 100644 example.java
+end note
+note left of LocalGit #LightSteelBlue
+História comitov:
+a5466f1 (HEAD -> master) Dalšia funkcia
+6f52063 Funkcia hotová
+end note
+LocalGit -> ExtGit--: git push
+@enduml

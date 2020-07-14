@@ -1,0 +1,13 @@
+@startuml
+!include ../include/themes/light.puml
+App->"REST API":GET id 
+group Hibernate Session \n @UnitOfWork
+	"REST API"->DAO:get(id)
+	activate "REST API"
+	DAO->Database:SELECT * from orders where ID=id
+	Database-->DAO:Výsledok JAVA objekt
+	DAO-->"REST API":Výsledok JAVA objekt
+	deactivate "REST API"
+end
+"REST API"-> App: Výsledok JSON formát
+@enduml

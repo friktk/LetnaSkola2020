@@ -1,0 +1,19 @@
+@startuml
+!include ../include/themes/light.puml 
+skinparam rectangle {
+    roundCorner 25
+    BackgroundColor BG_SECONDARY_COLOR
+}
+frame "Lokálny počítac" {
+ 
+    database "Databáza verzii" {
+    '   rectangle rectangle ["Verzia 3"]
+      rectangle "Verzia 2"      
+      rectangle "Verzia 1"
+    '   "Verzia 3" --> "Verzia 2"            
+    }
+  
+}
+
+
+@enduml
