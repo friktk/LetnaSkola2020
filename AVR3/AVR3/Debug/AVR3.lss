@@ -1,0 +1,308 @@
+
+AVR3.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         0000000c  00800100  000001b2  00000226  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         000001b2  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .comment      00000030  00000000  00000000  00000232  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000264  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000108  00000000  00000000  000002a4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000f29  00000000  00000000  000003ac  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 000005a1  00000000  00000000  000012d5  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   000005c7  00000000  00000000  00001876  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000270  00000000  00000000  00001e40  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    000004a9  00000000  00000000  000020b0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    0000083d  00000000  00000000  00002559  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 000000c8  00000000  00000000  00002d96  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+   8:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+   c:	0c 94 7f 00 	jmp	0xfe	; 0xfe <__vector_3>
+  10:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  14:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  18:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  1c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  20:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  24:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  28:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  2c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  30:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  34:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  38:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  3c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  40:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  44:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  48:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  4c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  50:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  54:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  58:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  5c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  60:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  64:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	11 e0       	ldi	r17, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	e2 eb       	ldi	r30, 0xB2	; 178
+  7c:	f1 e0       	ldi	r31, 0x01	; 1
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	ac 30       	cpi	r26, 0x0C	; 12
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+  8a:	0e 94 4b 00 	call	0x96	; 0x96 <main>
+  8e:	0c 94 d7 00 	jmp	0x1ae	; 0x1ae <_exit>
+
+00000092 <__bad_interrupt>:
+  92:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000096 <main>:
+#include "BOARD_AVR.h"
+#include "UART_BT.h"
+#include "TLACIDLO.h"
+
+int main(void)
+{
+  96:	cf 93       	push	r28
+  98:	df 93       	push	r29
+  9a:	00 d0       	rcall	.+0      	; 0x9c <main+0x6>
+  9c:	cd b7       	in	r28, 0x3d	; 61
+  9e:	de b7       	in	r29, 0x3e	; 62
+	UART_BT uart;
+  a0:	ce 01       	movw	r24, r28
+  a2:	01 96       	adiw	r24, 0x01	; 1
+  a4:	0e 94 9d 00 	call	0x13a	; 0x13a <_ZN7UART_BTC1Ev>
+	
+	uart.Uart_init();   // 9600 8N1
+  a8:	ce 01       	movw	r24, r28
+  aa:	01 96       	adiw	r24, 0x01	; 1
+  ac:	0e 94 a3 00 	call	0x146	; 0x146 <_ZN7UART_BT9Uart_initEv>
+	uart.Uart_send("AVR_BOARD\r\n");
+  b0:	60 e0       	ldi	r22, 0x00	; 0
+  b2:	71 e0       	ldi	r23, 0x01	; 1
+  b4:	ce 01       	movw	r24, r28
+  b6:	01 96       	adiw	r24, 0x01	; 1
+  b8:	0e 94 c2 00 	call	0x184	; 0x184 <_ZN7UART_BT9Uart_sendEPKc>
+	
+	TLAC tlac;
+  bc:	ce 01       	movw	r24, r28
+  be:	02 96       	adiw	r24, 0x02	; 2
+  c0:	0e 94 6c 00 	call	0xd8	; 0xd8 <_ZN4TLACC1Ev>
+	tlac.Tlac_init();
+  c4:	ce 01       	movw	r24, r28
+  c6:	02 96       	adiw	r24, 0x02	; 2
+  c8:	0e 94 74 00 	call	0xe8	; 0xe8 <_ZN4TLAC9Tlac_initEv>
+	sei();
+  cc:	78 94       	sei
+  ce:	ff cf       	rjmp	.-2      	; 0xce <main+0x38>
+
+000000d0 <_ZN7RGB_LEDC1Ev>:
+#include "RGB_LED.h"
+
+// default constructor
+RGB_LED::RGB_LED()
+{
+	sbi(DDRD,LED_RED);   //DDRD
+  d0:	54 9a       	sbi	0x0a, 4	; 10
+	sbi(DDRD,LED_GREEN);
+  d2:	52 9a       	sbi	0x0a, 2	; 10
+	sbi(DDRD,LED_BLUE);
+  d4:	57 9a       	sbi	0x0a, 7	; 10
+  d6:	08 95       	ret
+
+000000d8 <_ZN4TLACC1Ev>:
+bool TLAC::Get_Tlacidlo()
+{
+	if((PINB&(1<<TL))==0)
+		return true;
+	return false;
+}
+  d8:	0e 94 68 00 	call	0xd0	; 0xd0 <_ZN7RGB_LEDC1Ev>
+  dc:	20 98       	cbi	0x04, 0	; 4
+  de:	28 9a       	sbi	0x05, 0	; 5
+  e0:	5c 9a       	sbi	0x0b, 4	; 11
+  e2:	5a 9a       	sbi	0x0b, 2	; 11
+  e4:	5f 9a       	sbi	0x0b, 7	; 11
+  e6:	08 95       	ret
+
+000000e8 <_ZN4TLAC9Tlac_initEv>:
+
+void TLAC::Tlac_init()
+{
+	sbi(PCICR,PCIE0);		 //povolenie prerusenia 0-tej skupiny
+  e8:	e8 e6       	ldi	r30, 0x68	; 104
+  ea:	f0 e0       	ldi	r31, 0x00	; 0
+  ec:	80 81       	ld	r24, Z
+  ee:	81 60       	ori	r24, 0x01	; 1
+  f0:	80 83       	st	Z, r24
+	sbi(PCMSK0,PCINT0);		// povolenie prerusenia od PB0 pri kazdej zmene
+  f2:	eb e6       	ldi	r30, 0x6B	; 107
+  f4:	f0 e0       	ldi	r31, 0x00	; 0
+  f6:	80 81       	ld	r24, Z
+  f8:	81 60       	ori	r24, 0x01	; 1
+  fa:	80 83       	st	Z, r24
+  fc:	08 95       	ret
+
+000000fe <__vector_3>:
+	Tl_stav = false;
+	return x; 
+	 }   */
+
+ISR(PCINT0_vect)
+{
+  fe:	1f 92       	push	r1
+ 100:	0f 92       	push	r0
+ 102:	0f b6       	in	r0, 0x3f	; 63
+ 104:	0f 92       	push	r0
+ 106:	11 24       	eor	r1, r1
+ 108:	2f 93       	push	r18
+ 10a:	8f 93       	push	r24
+ 10c:	9f 93       	push	r25
+	//TLAC::tlacidlo_pointer->obsluha_interruptTL();
+	tbi(PORTD,LED_RED); 
+ 10e:	9b b1       	in	r25, 0x0b	; 11
+ 110:	80 e1       	ldi	r24, 0x10	; 16
+ 112:	89 27       	eor	r24, r25
+ 114:	8b b9       	out	0x0b, r24	; 11
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 116:	2f e7       	ldi	r18, 0x7F	; 127
+ 118:	8f e4       	ldi	r24, 0x4F	; 79
+ 11a:	92 e1       	ldi	r25, 0x12	; 18
+ 11c:	21 50       	subi	r18, 0x01	; 1
+ 11e:	80 40       	sbci	r24, 0x00	; 0
+ 120:	90 40       	sbci	r25, 0x00	; 0
+ 122:	e1 f7       	brne	.-8      	; 0x11c <__vector_3+0x1e>
+ 124:	00 c0       	rjmp	.+0      	; 0x126 <__vector_3+0x28>
+ 126:	00 00       	nop
+	_delay_ms(500);
+   sbi(PCIFR, PCIF0);   // vynulovanie priznaku prerusenia
+ 128:	d8 9a       	sbi	0x1b, 0	; 27
+}
+ 12a:	9f 91       	pop	r25
+ 12c:	8f 91       	pop	r24
+ 12e:	2f 91       	pop	r18
+ 130:	0f 90       	pop	r0
+ 132:	0f be       	out	0x3f, r0	; 63
+ 134:	0f 90       	pop	r0
+ 136:	1f 90       	pop	r1
+ 138:	18 95       	reti
+
+0000013a <_ZN7UART_BTC1Ev>:
+
+
+void UART_BT::Uart_send_bytes(char* data, const uint8_t len)
+{
+	for(uint8_t i=0; i < len; i++) this->Uart_send_char(*(data++));
+};
+ 13a:	e4 e6       	ldi	r30, 0x64	; 100
+ 13c:	f0 e0       	ldi	r31, 0x00	; 0
+ 13e:	80 81       	ld	r24, Z
+ 140:	8d 7f       	andi	r24, 0xFD	; 253
+ 142:	80 83       	st	Z, r24
+ 144:	08 95       	ret
+
+00000146 <_ZN7UART_BT9Uart_initEv>:
+ 146:	51 9a       	sbi	0x0a, 1	; 10
+ 148:	50 98       	cbi	0x0a, 0	; 10
+ 14a:	10 92 c5 00 	sts	0x00C5, r1	; 0x8000c5 <__DATA_REGION_ORIGIN__+0x65>
+ 14e:	8b e9       	ldi	r24, 0x9B	; 155
+ 150:	80 93 c4 00 	sts	0x00C4, r24	; 0x8000c4 <__DATA_REGION_ORIGIN__+0x64>
+ 154:	e2 ec       	ldi	r30, 0xC2	; 194
+ 156:	f0 e0       	ldi	r31, 0x00	; 0
+ 158:	80 81       	ld	r24, Z
+ 15a:	86 60       	ori	r24, 0x06	; 6
+ 15c:	80 83       	st	Z, r24
+ 15e:	e1 ec       	ldi	r30, 0xC1	; 193
+ 160:	f0 e0       	ldi	r31, 0x00	; 0
+ 162:	80 81       	ld	r24, Z
+ 164:	88 61       	ori	r24, 0x18	; 24
+ 166:	80 83       	st	Z, r24
+ 168:	e0 ec       	ldi	r30, 0xC0	; 192
+ 16a:	f0 e0       	ldi	r31, 0x00	; 0
+ 16c:	80 81       	ld	r24, Z
+ 16e:	82 60       	ori	r24, 0x02	; 2
+ 170:	80 83       	st	Z, r24
+ 172:	08 95       	ret
+
+00000174 <_ZN7UART_BT14Uart_send_charEh>:
+ 174:	e0 ec       	ldi	r30, 0xC0	; 192
+ 176:	f0 e0       	ldi	r31, 0x00	; 0
+ 178:	80 81       	ld	r24, Z
+ 17a:	85 ff       	sbrs	r24, 5
+ 17c:	fd cf       	rjmp	.-6      	; 0x178 <_ZN7UART_BT14Uart_send_charEh+0x4>
+ 17e:	60 93 c6 00 	sts	0x00C6, r22	; 0x8000c6 <__DATA_REGION_ORIGIN__+0x66>
+ 182:	08 95       	ret
+
+00000184 <_ZN7UART_BT9Uart_sendEPKc>:
+
+void UART_BT::Uart_send( const char* data) {
+ 184:	0f 93       	push	r16
+ 186:	1f 93       	push	r17
+ 188:	cf 93       	push	r28
+ 18a:	df 93       	push	r29
+ 18c:	eb 01       	movw	r28, r22
+	for ( const char* s = data; *s; ++s) {
+ 18e:	68 81       	ld	r22, Y
+ 190:	66 23       	and	r22, r22
+ 192:	41 f0       	breq	.+16     	; 0x1a4 <_ZN7UART_BT9Uart_sendEPKc+0x20>
+ 194:	8c 01       	movw	r16, r24
+ 196:	21 96       	adiw	r28, 0x01	; 1
+		this->Uart_send_char( *s);
+ 198:	c8 01       	movw	r24, r16
+ 19a:	0e 94 ba 00 	call	0x174	; 0x174 <_ZN7UART_BT14Uart_send_charEh>
+{
+	for(uint8_t i=0; i < len; i++) this->Uart_send_char(*(data++));
+};
+
+void UART_BT::Uart_send( const char* data) {
+	for ( const char* s = data; *s; ++s) {
+ 19e:	69 91       	ld	r22, Y+
+ 1a0:	61 11       	cpse	r22, r1
+ 1a2:	fa cf       	rjmp	.-12     	; 0x198 <_ZN7UART_BT9Uart_sendEPKc+0x14>
+		this->Uart_send_char( *s);
+	}
+};
+ 1a4:	df 91       	pop	r29
+ 1a6:	cf 91       	pop	r28
+ 1a8:	1f 91       	pop	r17
+ 1aa:	0f 91       	pop	r16
+ 1ac:	08 95       	ret
+
+000001ae <_exit>:
+ 1ae:	f8 94       	cli
+
+000001b0 <__stop_program>:
+ 1b0:	ff cf       	rjmp	.-2      	; 0x1b0 <__stop_program>
