@@ -126,6 +126,9 @@ nav:
     - Cvičenia:
         - Knižnica: https://github.com/friktk/LetnaSkola2020/archive/triedy_cvicenie.zip
         - Schémy: https://github.com/friktk/LetnaSkola2020/tree/priklady/schema
+    - Odkazy a návody: link.md
+    
+        
 
 #google_analytics:
 #  - UA-165560005-2
