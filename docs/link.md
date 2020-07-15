@@ -12,9 +12,13 @@ Zadig USB Driver Installer: [https://zadig.akeo.ie/](https://www.youtube.com/red
 
 [Avrdudess -  GUI](https://blog.zakkemble.net/avrdudess-a-gui-for-avrdude/)
 
+## Iné
+
 [Zoznam skratiek Atmel studio](http://visualstudioshortcuts.com/2015/)
 
 [C gibberish ↔ English](https://cdecl.org/)
+
+[hackerrank](https://www.hackerrank.com/)
 
 
 
