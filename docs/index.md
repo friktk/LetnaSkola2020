@@ -27,7 +27,7 @@ Systém BT-car3 je navrhnutý ako skladačka, ktorá zatiaľ obsahuje dva zákla
 
 Modul AVR-board obsahuje viaceré komponenty, ktoré dovoľujú používateľovi vyvíjať množinu aplikácií bez priamej potreby aplikačného modulu. V takomto autonómnom režime je doska napájaná prostredníctvom programátora AVR ISP (PROG) z USB portu počítača. 
 
-<img src="images/modulAvr.jpg#center" alt="img" style="zoom:45%;" />
+<img src="images/modulAvr.png#center" alt="img" style="zoom:45%;" />
 
 !!! question "Aké úlohy umožňuje riešiť samotný modul AVR-board? "
 	Uveďme aspoň niektoré:
