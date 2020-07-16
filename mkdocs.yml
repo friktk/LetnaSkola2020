@@ -121,7 +121,7 @@ nav:
         - Príklad 4 „UART“: pr4.md
         - Príklad 5 „Fotoodpor“: pr5.md
         - Prerušovací podsystém: pr6.md
-        - PWM: pr7.md
+        - PWM: pwm.md
         - Download: https://github.com/friktk/LetnaSkola2020/archive/ulohy.zip
     - Cvičenia:
         - Knižnica: https://github.com/friktk/LetnaSkola2020/archive/triedy_cvicenie.zip

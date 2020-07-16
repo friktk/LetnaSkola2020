@@ -104,21 +104,14 @@ PCIE0 v registri PCICR – povolenie prerušenia od skupiny PCINT0. Nakoniec pov
     
     class TLAC : RGB
     {
-        //variables
-    public:
-    protected:
-    private:
-        //static bool Tl_stav;
-        //functions
+    //variables
+                
     public:
         TLAC();
         ~TLAC();
         bool Get_Tlacidlo(void);
-    
-        //	 bool Get_Tlacidlo_int(void);
-        //static TLAC* tlacidlo_pointer;
-    
-        //static inline void obsluha_interruptTL(void);
+              
+        static void obsluha_interruptTL(void);
         void Tlac_init(void);
     
     protected:
@@ -162,11 +155,54 @@ PCIE0 v registri PCICR – povolenie prerušenia od skupiny PCINT0. Nakoniec pov
     
     ISR(PCINT0_vect)
     {
-        //TLAC::tlacidlo_pointer->obsluha_interruptTL();
-        tbi(PORTD, LED_RED);
+         tbi(PORTD, LED_RED);
         _delay_ms(500);
         sbi(PCIFR, PCIF0); // vynulovanie priznaku prerusenia
     }
+    ```
+=== "Alternatívna forma obsluhy prerušenia: TLACIDLO.cpp"
+    ```c++
+    #include "TLACIDLO.h"
+
+    // default constructor
+    TLAC::TLAC()
+    {
+        //	tlacidlo_pointer = this;
+        sbi(PORTB, TL); //pull-up
+        cbi(DDRB, TL);  // vstup
+        //	Tl_stav = false;
+    } //TLACIDLO
+    
+    // default destructor
+    TLAC::~TLAC()
+    {
+        cbi(PCMSK0, PCINT0); // zakaz prerusenia od PB0
+    } //~TLACIDLO
+    
+    bool TLAC::Get_Tlacidlo()
+    {
+        if ((PINB & (1 << TL)) == 0)
+            return true;
+        else
+            return false;
+    }
+    
+    void TLAC::Tlac_init()
+    {
+        sbi(PCICR, PCIE0);   //povolenie prerusenia 0-tej skupiny
+        sbi(PCMSK0, PCINT0); // povolenie prerusenia od PB0 pri kazdej zmene
+    }
+    
+    void TLAC::obsluha_interruptTL(){
+      	tbi(PORTD, LED_RED);
+        _delay_ms(500);
+        sbi(PCIFR, PCIF0); // vynulovanie priznaku prerusenia
+    }
+    
+    ISR(PCINT0_vect)
+    {
+       TLAC::obsluha_interruptTL();
+     }
     ```
 
 Príklad použitia:
@@ -277,7 +313,8 @@ FOC1A, FOC1B súvisia s riadením vývodov OC1A a OC1B. V režime časovač mô�
 - OCR1A (H, L) 16-bitový porovnávací register A
 - OCR1B (H, L) 16-bitový porovnávací register B
 
-### Príklad použitia:
+## Príklad použitia:
+
 === "PrerT1_OVF.h"
     ``` c++
     /* 
@@ -399,8 +436,7 @@ Uvedieme ešte výpis `main()`. V programe je využitá obsluha prerušenia  od
      * Created: 6.7.2020 11:22:27
      * Author : Juraj
      */
-    ```
-
+    
     #include "BOARD_AVR.h"
     #include "PrerT1_OVF.h"
     
