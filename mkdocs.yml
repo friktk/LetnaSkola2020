@@ -131,6 +131,6 @@ nav:
     
         
 
-#google_analytics:
-#  - UA-165560005-2
-#  - auto
+google_analytics:
+  - UA-165560005-3
+  - auto
