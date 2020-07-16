@@ -55,6 +55,8 @@ Poznamenajme, že v uvedenom riešení generovanie signálu plne vyťaží CPU m
 
 PWM signál s predchádzajúcej úlohy vyriešime s použitím modulu 8-bitového čítača/časovača0 (Č/Č0). Jeho štruktúra je uvedená na nasledujúcom obrázku.
 
+## 8-bitový čítač/časovač 0
+
 ![image-20200716143809961](images/citac_casovac_schema.png)
 
 Z obrázka je zrejmé, že modul Č/Č0 má k dispozícii dva kanály na generovanie signálov PWM. Vývody, na ktorých generujeme signály PWM, sú označené OC0A a OC0B. Princíp činnosti a význam jednotlivých bitov riadiacich registrov bude vysvetlený v priebehu kurzu, preto uveďme len krátky popis dôležitých registrov.
@@ -172,6 +174,7 @@ Register časovača/čítača umožňuje zapisovať a čítať obsah časovača/
     #ifndef __PWM0_H__
     #define __PWM0_H__
     #include "BOARD_AVR.h"
+    ```
 
     class PWM0
     {
@@ -194,6 +197,7 @@ Register časovača/čítača umožňuje zapisovať a čítať obsah časovača/
 === "Definičný súbor triedy PWM0.cpp"
     ``` c++
     #include "PWM0.h"
+    ```
 
         // default constructor
         PWM0::PWM0()
