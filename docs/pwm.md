@@ -174,8 +174,7 @@ Register časovača/čítača umožňuje zapisovať a čítať obsah časovača/
     #ifndef __PWM0_H__
     #define __PWM0_H__
     #include "BOARD_AVR.h"
-    ```
-
+    
     class PWM0
     {
         //variables
@@ -197,10 +196,8 @@ Register časovača/čítača umožňuje zapisovať a čítať obsah časovača/
 === "Definičný súbor triedy PWM0.cpp"
     ``` c++
     #include "PWM0.h"
-    ```
-
-        // default constructor
-        PWM0::PWM0()
+    // default constructor
+    PWM0::PWM0()
     {
         cbi(PRR, PRTIM0);	// enable TIM0
         sbi(DDRD, PORTD6);	// vystup

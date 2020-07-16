@@ -2,7 +2,7 @@
 
 Nasledujúci projekt sa venuje ovládaniu akustického návestia. Všimnite si, že na doske plošných spojov modulu AVR-board je aj akustické návestie, ktoré umožňuje generovať zvukový signál. Elektromagnetický bzučiak umožňuje generovať akustický signál s frekvenciou 3.1 kHz. Samozrejme je potrebné bzučiak budiť najvhodnejšie harmonickým signálom s frekvenciou 3.1 kHz. 
 
-![img](images/sche_pr2.jpg#75size)
+![img](images/sche_pr2.png#75size)
 
 V našom prípade si úlohu zjednodušíme a bzučiak budeme budiť obdĺžnikovým signálom. Zapojenie je uvedené na obrázku. Poznamenávam, že ak budeme používať popísaný bzučiak bude potrebné prepojku SJ1 spojiť (preletovaním). Nemusíme sa obávať, že tranzistor T1 môže pri nevhodnom nastavení vývodu PB0 ostať otvorený čo by spôsobilo trvalý prúd cievkou elektromagnetického bzučiaka. Hodnota odporu cievky je 20 ohmov. Pri napájaní 3.3V by pretekajúci prúd cievkou bol približne 165 mA. Kondenzátor C8 však zabraňuje trvalému otvoreniu tranzistora. Dióda D1 zabezpečuje vybitie elektromagnetickej energie nahromadenej v cievke pri rozopnutí T1
 

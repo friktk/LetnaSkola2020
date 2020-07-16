@@ -172,11 +172,11 @@
 | `return var;`                                                | Vrátenie návratovej hodnoty. Pre funkcie definované s `void` návratovým typu treba preskočiť `return`. Funkcie sa ukončia okamžite po vykonaní `return`. |
 | **Odovzdanie hodnoty alebo  odovzdanie ukazovateľa na hodnotu** |                                                              |
 | `void f(type x); f(y);`                                      | Odovzdanie premennej `y` do funkcie `f` pomocou hodnoty.     |
-| `void f(type ***x**); f(**array**);`                           | Odovzdanie poľa alebo textového retažca do funkcie `f.` (odovzdanie ukazovateľa) |
-| `void f(type ***x**); f(**structure**);`                       | Odovzdanie štruktúry do funkcie `f.` (odovzdanie ukazovateľa) |
-| `void f(type ***x**); f(**&y**);`                              | Odovzdanie premennej `y` do funkcie `f` pomocou ukazovateľa. |
+| `void f(type *x); f(array);`                                 | Odovzdanie poľa alebo textového retažca do funkcie `f.` (odovzdanie ukazovateľa) |
+| `void f(type *x); f(structure);`                             | Odovzdanie štruktúry do funkcie `f.` (odovzdanie ukazovateľa) |
+| `void f(type *x); f(&y);`                                    | Odovzdanie premennej `y` do funkcie `f` pomocou ukazovateľa. |
 | `type f(){ return x; }`                                      | Vracia sa podľa hodnoty.                                     |
-| `type f(){ type x; return **&x**; }`                         | Vracia premennú podľa ukazovateľa.                           |
+| `type f(){ type x; return &x; }`                             | Vracia premennú podľa ukazovateľa.                           |
 | *Ukazovateľ vám umožňuje zmeniť pôvodnú premennú v rámci funkcie.* |                                                              |
 
 ### Podmienené vetvenie
@@ -193,6 +193,62 @@
 | `switch(a){ case b: case c: d; }`                            | Vykonáva, `d`ak sa `a`rovná buď `b`alebo `c`.                |
 | `switch(a){ case b: c; case d: e; default: f; }`             | Vykonáva `c`, `e`a `f`ak sa `a`rovná `b`, `e`a `f`ak sa `a`rovná `d`, inak `f`. |
 | `switch(a){ case b: c; break; case d: e; break; default: f; }` | Vykonáva, `c`ak sa `a`rovná `b`, `e`ak sa `a`rovná `d`a `e`inak. |
+
+### Slučky (opakovanie)
+
+| **while**                                                    |                                                              |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `int x = 0; while(x < 10){ x += 2; }`                        |                                                              |
+| *Slučka je preskočená, ak sú podmienky testu spočiatku nepravdivé.* |                                                              |
+| `int x = 0;`                                                 | Deklarácia a inicializovanie celého čísla `x`.               |
+| `while()`                                                    | Klúčové slovo a v zátvorkách je umiestnená podmienka         |
+| `x < 10`                                                     | Podmineka opakovania slučky.                                 |
+| `{}`                                                         | Odelenie kódu vykonávaného v slučke.                         |
+| `x += 2;`                                                    | Obsah slučky.                                                |
+| **do while**                                                 |                                                              |
+| `char c = 'A'; do { c++; } while(c != 'Z');`                 |                                                              |
+| *Vždy prechádza slučkou najmenej raz.*                       |                                                              |
+| `char c = 'A';`                                              | Deklarácia a inicializovanie znaku `c`.                      |
+| `do`                                                         | Kľúčové slovo.                                               |
+| `{}`                                                         | Oddeľovače slučky.                                           |
+| `c++;`                                                       | Obsah slučky.                                                |
+| `while();`                                                   | Klúčové slovo a v zátvorkách je umiestnená podmienka. Bedkočiarka na konci. |
+| `c != 'Z'`                                                   | Podmineka opakovania slučky.                                 |
+| **for**                                                      |                                                              |
+| `int i; for(i = 0; n[i] != '\0'; i++){}`                     | verzia jazyka c **(C89)**                                    |
+| alebo                                                        |                                                              |
+| `for(int i = 0; n[i] != '\0'; i++){}`                        | verzia jazyka c **(C99 +)**                                  |
+| Slučka založená na zvýšení / znížení hodnoty premennej.      |                                                              |
+| `int i;`                                                     | Deklaruje celé číslo `i`.                                    |
+| `for()`                                                      | Kľúčové slovo.                                               |
+| `i = 0;`                                                     | Inicializuje celé číslo `i`. *Bodkočiarka.*                  |
+| `n[i] != '\0';`                                              | Podmienka opakovania slučky. *Bodkočiarka.*                  |
+| `i++`                                                        | Prírastky `i`. *Žiadna bodkočiarka.*                         |
+| `{}`                                                         | Oddeľovač slučky.                                            |
+| **continue**                                                 |                                                              |
+| `int i=0; while(i<10){ i++; continue; i--;}`                 |                                                              |
+| *Preskočí zvyšok obsahu slučky a reštartuje ju, pokračuje na začiatku slučky.* |                                                              |
+| **break**                                                    |                                                              |
+| `int i=0; while(1){ if(x==10){break;} i++; }`                |                                                              |
+| *Preskočí zvyšok obsahu slučky a ukončí slučku.*             |                                                              |
+
+### Direktívy o predprocesoroch
+
+|                         |                                                             |
+| ----------------------- | ----------------------------------------------------------- |
+| `#include <inbuilt.h>`  | Nahrádza riadok obsahom štandardného hlavičkového súboru h. |
+| `#include "./custom.h"` | Nahrádza riadok obsahom vlastného súboru hlavičky.          |
+| `#define NAME value`    | Definovanie makra. Nahradí všetky výskyty `NAME`za `value`. |
+
+### Komentáre
+
+```c++
+// Toto je jednoriadkový komentár!
+// Na týchto riadkoch nezostane // po kompilácii nič.
+
+/* Toto je viacriadkový komentár!
+Medzi týmito oddeľovačmi nebolo nič kompilované. */
+```
 
 ### Unárne operátory
 
